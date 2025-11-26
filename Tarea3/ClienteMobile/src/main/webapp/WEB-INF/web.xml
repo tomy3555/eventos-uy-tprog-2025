@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+    version="6.0">
+
+    <display-name>XClienteMobile</display-name>
+
+    <!-- ======= WSDLs ======= -->
+    <context-param>
+        <param-name>wsdl.publicadorUsuario</param-name>
+        <param-value>http://192.168.1.91:8090/publicadorUsuario?wsdl</param-value>
+    </context-param>
+    <context-param>
+        <param-name>wsdl.publicadorEvento</param-name>
+        <param-value>http://192.168.1.91:8090/publicadorEvento?wsdl</param-value>
+    </context-param>
+    <context-param>
+        <param-name>wsdl.publicadorEstadisticas</param-name>
+        <param-value>http://192.168.1.91:8090/publicadorEstadisticas?wsdl</param-value>
+    </context-param>
+
+    <!-- ======= Endpoints SOAP (donde se invoca realmente) ======= -->
+    <context-param>
+        <param-name>endpoint.publicadorUsuario</param-name>
+        <param-value>http://192.168.1.91:8090/publicadorUsuario</param-value>
+    </context-param>
+    <context-param>
+        <param-name>endpoint.publicadorEvento</param-name>
+        <param-value>http://192.168.1.91:8090/publicadorEvento</param-value>
+    </context-param>
+    <context-param>
+        <param-name>endpoint.publicadorEstadisticas</param-name>
+        <param-value>http://192.168.1.91:8090/publicadorEstadisticas</param-value>
+    </context-param>
+
+    <!-- Página/servlet de bienvenida -->
+    <welcome-file-list>
+        <welcome-file>auth/login</welcome-file>
+    </welcome-file-list>
+
+</web-app>

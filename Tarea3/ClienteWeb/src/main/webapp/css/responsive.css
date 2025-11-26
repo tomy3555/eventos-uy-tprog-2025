@@ -1,0 +1,103 @@
+/* Global responsive helpers and utility classes */
+:root{
+  --break-sm:700px;
+  --break-md:992px;
+  --container-max:1200px;
+}
+
+/* Make the main container adapt to viewport */
+.container{ max-width:var(--container-max); padding-left:1rem; padding-right:1rem; }
+
+/* Responsive typography (scale down on small devices) */
+h1{ font-size:clamp(1.4rem, 2.5vw, 2rem); }
+h2{ font-size:clamp(1.15rem, 2.1vw, 1.5rem); }
+
+/* Utility: hide on mobile / hide on desktop */
+.hide-mobile{ display:none; }
+@media (min-width: calc(var(--break-sm) + 1px)){ .hide-mobile{ display:initial; } }
+
+.hide-desktop{ display:inline-flex; }
+@media (min-width: calc(var(--break-sm) + 1px)){ .hide-desktop{ display:none; } }
+
+/* Responsive images already handled but ensure background images cover */
+.img-cover{ width:100%; height:auto; object-fit:cover; }
+
+/* Form responsive helpers */
+.form-row{ display:flex; gap:1rem; }
+.form-row .col{ flex:1; }
+@media (max-width: var(--break-sm)){
+  .form-row{ flex-direction:column; }
+}
+
+/* Simple responsive grid helpers */
+.grid{ display:grid; gap:1rem; }
+.grid-2{ grid-template-columns: 1fr 1fr; }
+.grid-3{ grid-template-columns: repeat(3, 1fr); }
+@media (max-width: var(--break-sm)){
+  .grid-2, .grid-3{ grid-template-columns: 1fr; }
+}
+
+/* Buttons full-width on small screens */
+@media (max-width: var(--break-sm)){
+  .btn{ width:100%; display:inline-block; }
+  .actions, .actions-iniciar-sesion{ flex-direction:column; }
+}
+
+/* Accessibility focus helpers */
+.focus-outline:focus{ outline:2px solid #2563eb; outline-offset:2px; border-radius:.25rem; }
+
+/* Small utility spacing */
+.mt-1{ margin-top:.5rem; }
+.mt-2{ margin-top:1rem; }
+.mb-1{ margin-bottom:.5rem; }
+
+/* Modal full-screen on very small devices */
+@media (max-width:420px){
+  .card{ border-radius:0.5rem; padding:.75rem; }
+  .wrapper-iniciar-sesion{ padding:1rem; margin:1.25rem auto; }
+}
+
+/* Cards and index-specific responsive styles */
+.cards{ display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:16px; }
+.card{ border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; background:#fff; padding:12px; display:flex; flex-direction:column; }
+.card__media{ position:relative; aspect-ratio:16/9; background:#f3f4f6; overflow:hidden; border-radius:10px; margin-bottom:8px; }
+.card__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+.card.no-media .card__media{ display:none; }
+.card h2{ margin:.25rem 0 .5rem; font-size:1.05rem; }
+.card p{ color:#444; font-size:.95rem; }
+.btn-linklike{ background:#f9fafb; border:1px solid #d1d5db; padding:.45rem .75rem; border-radius:8px; cursor:pointer; }
+.btn-linklike:hover{ background:#f3f4f6; }
+
+/* Layout adjustments for main area */
+.main-inicio{ padding: .5rem 0; }
+
+/* Responsive tweaks */
+@media (max-width: 992px){
+  .cards{ gap:14px; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); }
+}
+
+@media (max-width: 700px){
+  .cards{ grid-template-columns:1fr; gap:12px; }
+  .card{ padding:10px; }
+  .card__media{ aspect-ratio: 3/2; border-radius:8px; }
+  .btn-linklike{ width:100%; }
+  .main-inicio{ padding:0; }
+  .container{ padding-left:.6rem; padding-right:.6rem; }
+}
+
+/* Remove small-screen aside toggle helpers; keep aside visible on all viewports */
+/* Previously we hid the aside on small screens and relied on a hamburger toggle.
+   The toggle was removed, so ensure the aside is displayed normally. */
+.aside-inicio { display:block; }
+
+/* ensure hide-desktop doesn't break on larger screens */
+@media (min-width: 701px) {
+  .hide-desktop { display:none !important; }
+}
+
+@media (max-width:420px){
+  .card h2{ font-size:1rem; }
+  .card p{ font-size:.9rem; }
+}
+
+/* end cards/index styles */

@@ -1,0 +1,42 @@
+/* ===== ModificarUsuario.css ===== */
+
+.muted {
+    color: #6b7280;
+    font-size: .9rem;
+    margin: .25rem 0 .75rem;
+  }
+  
+  /* Imagen de perfil */
+  .img-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  @media (max-width: 700px) {
+    .img-row { grid-template-columns: 1fr; }
+  }
+  
+  #fotoWrap {
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--line);
+    border-radius: .75rem;
+    background: var(--bg-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  #fotoWrap span {
+    color: #888;
+    font-size: .9rem;
+  }
+  
+  .img-actions label.chk {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: .5rem;
+  }

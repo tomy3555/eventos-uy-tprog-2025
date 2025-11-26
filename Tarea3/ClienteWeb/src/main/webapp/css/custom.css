@@ -1,0 +1,197 @@
+/* ===========================================
+   CUSTOM.CSS – Efectos globales visuales
+   =========================================== */
+html, body { margin:0; min-height:100vh; }
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background: #1a1a1a url("../img/fondo-eventos.jpg") center / cover no-repeat;
+  z-index:-1;
+}
+/* Capa translúcida de suavizado */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(3px);
+  z-index: -1;
+  /* make the overlay non-interactive and ensure full coverage */
+  pointer-events: none;
+  height: 100%;
+  bottom: auto;
+}
+
+/* ===== Header translúcido ===== */
+.site-header {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px) saturate(130%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: background 0.3s ease;
+}
+
+/* ===== Paneles tipo "glass" (aside, cards, etc.) ===== */
+body .card,
+body .aside-inicio {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  transition: background 0.3s ease;
+}
+
+/* Mejor contraste de texto dentro de paneles */
+body .card h1, 
+body .card h2, 
+body .card p,
+body .aside-inicio h3, 
+body .aside-inicio h4, 
+body .aside-inicio li, 
+body .aside-inicio button {
+  color: #111 !important;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+  body .card,
+  body .aside-inicio {
+    background: rgba(255,255,255,0.8) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+} /* <- close media query here: only the small adjustments above should be inside it */
+
+/* ===== Bloque Ediciones - estilo glass ===== */
+.editions {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Cada item dentro de la lista (ediciones-list) */
+.ediciones-list li {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+/* Hover suave */
+.ediciones-list li:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Texto legible y contraste */
+.ediciones-list li strong,
+.ediciones-list li span {
+  color: #111 !important;
+}
+
+/* Evita la franja translúcida blanca al final */
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* === Card de altas (más ancha, con efecto glass igual al resto) === */
+.card.event-card-wide,
+.event-card-wide {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+  padding: 2rem 2.5rem;
+  margin: 1rem auto;
+  width: min(90%, 1200px); /* más ancho que el event-card normal */
+  transition: all 0.3s ease;
+}
+
+/* Títulos y texto más legibles */
+.event-card-wide h1,
+.event-card-wide h2,
+.event-card-wide label,
+.event-card-wide p,
+.event-card-wide legend {
+  color: #111;
+}
+
+/* Interior con distribución fluida */
+.event-card-wide form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Inputs y botones más cómodos */
+.event-card-wide input[type="text"],
+.event-card-wide textarea,
+.event-card-wide input[type="file"],
+.event-card-wide select {
+  width: 100%;
+  padding: .6rem .8rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.8);
+}
+
+.event-card-wide button {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: .6rem 1.2rem;
+}
+/* ===== Estilo uniforme para los selects iniciales (Evento y Edición) ===== */
+.inline-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.inline-form .form-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 500px;
+}
+
+.inline-form label.form-label {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: .3rem;
+}
+
+.inline-form select.form-select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px) saturate(140%);
+  color: #111;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.inline-form select.form-select:focus {
+  outline: none;
+  border-color: #3478f6;
+  box-shadow: 0 0 0 3px rgba(52,120,246,0.25);
+}
+
+/* Ajuste del botón nativo de select (arrow) */
+.inline-form select.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23333' d='M0 0l5 6 5-6H0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 10px;
+}

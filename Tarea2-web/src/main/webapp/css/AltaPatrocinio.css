@@ -1,0 +1,126 @@
+/* ===== Layout general ===== */
+
+.page-wrapper {
+  max-width: 1400px;        /* antes 1200: un poco más ancho */
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.layout-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;                /* un pelín más de separación */
+  width: 100%;
+}
+
+/* ===== Menú (aside) ===== */
+/* Ensanchamos el menú para que “llene” más */
+.aside-inicio {
+  width: 380px;             /* <<— aquí el cambio importante */
+  min-width: 360px;
+  padding: 14px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Por si tu menu.jsp usa .card también */
+.aside-inicio.card {
+  width: 380px;
+  min-width: 360px;
+}
+
+/* ===== Main ===== */
+
+.main-card {
+  flex: 1;
+  padding: 16px;
+  min-width: 520px;         /* evita que el main colapse y el menú quede “flotando” */
+}
+
+.page-title {
+  margin: 0 0 12px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* ===== Tarjeta/form ===== */
+
+.form-card {
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.alert-error {
+  background: #fdeaea;
+  color: #a40000;
+  border: 1px solid #f2b5b5;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+/* ===== Formularios ===== */
+
+.inline-form {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.form-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.form-label {
+  display: inline-block;
+  min-width: 90px;          /* un poco más ancho para alinear mejor */
+  font-weight: 600;
+}
+
+.form-input,
+.form-select {
+  padding: 10px 12px;
+  border: 1px solid #d6d7da;
+  border-radius: 10px;
+  font: inherit;
+  outline: none;
+  min-width: 260px;         /* selects/inputs más cómodos */
+  background: #fff;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #8aa4ff;
+  box-shadow: 0 0 0 3px rgba(138,164,255,0.25);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr)); /* columnas más anchas */
+  gap: 14px;
+}
+
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field--full { grid-column: 1 / -1; }
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+/* Botones */
+.btn {
+  appearance: none;
+  border: 1px solid #c9cad1;
+  background: #f7f8fa;
+  padding: 9px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+}
+.btn:hover { background: #eef0f5; }
+.btn-primary { background: #315efb; border-color: #315efb; color: #fff; }
+.btn-primary:hover { background: #274bcb; }

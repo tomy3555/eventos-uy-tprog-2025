@@ -1,0 +1,190 @@
+/* CSS específico para el formulario de Iniciar Sesión */
+@charset "UTF-8";
+
+/* Estilo general para la estructura del formulario */
+.wrapper-iniciar-sesion,
+main .wrapper-iniciar-sesion {
+  width: 100%;
+  max-width: 500px; /* control maximum width */
+  margin: 0 auto; /* remove top margin so vertical centering via min-height works */
+  padding: 1rem; /* padding around the wrapper */
+  box-sizing: border-box;
+
+  /* center content vertically and horizontally inside the viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: center;   /* let children take full width */
+  min-height: calc(100vh - 140px); /* account for header/footer space */
+}
+
+.form-iniciar-sesion,
+main form,
+form.login-form {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  /* limit the card width so it can be centered inside the wrapper */
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Título del formulario */
+.titulo-iniciar-sesion,
+main h2,
+main h1 {
+  text-align: left;
+  color: #111827;
+  font-size: 1.6rem;
+  margin: 0 0 .5rem 0;
+}
+
+/* Estilo para las etiquetas de los campos */
+.campo-iniciar-sesion label,
+main label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: .35rem;
+}
+
+/* Estilo para los campos de entrada */
+.campo-iniciar-sesion input,
+main input[type="text"],
+main input[type="password"] {
+  width: 100%;
+  padding: .65rem .75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.campo-iniciar-sesion input:focus,
+main input:focus {
+  outline: 2px solid rgba(59,130,246,0.2);
+  border-color: #3b82f6;
+}
+
+/* Acciones (botones) */
+.acciones-iniciar-sesion {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acciones-iniciar-sesion .btn,
+.btn-iniciar-sesion,
+.btn-cancelar-iniciar-sesion,
+main button[type="submit"] {
+  flex: 1 1 0;
+  padding: .6rem .8rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-iniciar-sesion {
+  background-color: #0a66c2;
+  color: #fff;
+}
+
+.btn-iniciar-sesion:hover { background-color: #004999; }
+
+.btn-cancelar-iniciar-sesion {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.btn-cancelar-iniciar-sesion:hover { background-color: #d1d5db; }
+
+/* Estilo para el mensaje de error */
+.error-message,
+#msg {
+  color: #b91c1c;
+  font-size: .95rem;
+  margin-top: .5rem;
+  display: block;
+}
+
+/* ====== LOGIN – MODO MÓVIL TIPO MAQUETA ====== */
+@media (max-width: 1000px){
+  /* Fondo celeste y centrado vertical */
+  .wrapper-iniciar-sesion{
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    margin: 0 auto;
+    background: #fff; /* celeste suave de la guía */
+    max-width: 480px;    /* que no se “pegue” a los lados */
+  }
+
+  /* El “card” desaparece: sin borde ni sombra */
+  .form-iniciar-sesion{
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: 360px; /* ancho típico del “teléfono” de la guía */
+    gap: 12px;
+  }
+
+  /* Título grande “EventosUy” */
+  .titulo-iniciar-sesion{
+    font-size: 34px !important;
+    font-weight: 800;
+    margin: 8px 0 16px;
+    color: #111827;
+    text-align: left;
+  }
+
+  /* Inputs altos, bordes simples */
+  .campo-iniciar-sesion input,
+  main input[type="text"],
+  main input[type="password"]{
+    height: 48px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    padding: 0 12px;
+    font-size: 16px;
+    background: #fff;
+  }
+
+  /* Botón grande y ancho */
+  .acciones-iniciar-sesion{
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btn-iniciar-sesion,
+  .btn-cancelar-iniciar-sesion{
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  .btn-iniciar-sesion{ background:#2c6bed; } /* azul estilo maqueta */
+
+  /* (Opcional) ocultar header para que quede “lienzo limpio” */
+  .site-header, .topbar { display: none; }
+}
+
+.busqueda-sidebar,
+.card {
+  background: rgba(255,255,255,.7);           /* semitransparente */
+  backdrop-filter: saturate(120%) blur(8px);  /* difumina lo que está DETRÁS */
+}
+/* Utility: ensure main selectors don't collide badly */
+main form, .form-iniciar-sesion { max-width: 100%; }

@@ -1,0 +1,91 @@
+/* ===== Layout contenedor ===== */
+.layout-inicio,
+.consulta-layout {
+ display: grid;
+  grid-template-columns: 300px 3fr;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* ===== Aside ===== */
+aside.card,
+.aside-inicio {
+  align-self: start;
+  height: fit-content;
+  min-width: 250px;
+  max-width: 400px;
+  top: 100px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.aside-inicio h3 { margin:.25rem 0 .75rem; font-size:1.05rem; color:var(--ink); }
+.aside-inicio h4 { margin:1rem 0 .5rem; font-size:1rem; color:#444; }
+
+/* ===== Listas ===== */
+.aside-inicio ul,
+.aside-inicio .menu-categorias {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0;
+}
+.aside-inicio .menu-categorias li,
+.aside-inicio ul li { margin-bottom: .75rem; }
+
+/* ===== Enlaces tipo texto ===== */
+/* Para <a> ya estaba, reforzamos */
+.aside-inicio a,
+.aside-inicio a.linklike {
+  color: #555 !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  font-weight: 500;
+}
+.aside-inicio a:hover,
+.aside-inicio a.linklike:hover {
+  color: var(--ink) !important;
+  text-decoration: underline !important;
+}
+
+/* Para <button class="linklike"> dentro de <form> */
+/* Forzamos a que parezca texto, no botón */
+.aside-inicio form { display: inline; }
+
+.aside-inicio button.linklike,
+.aside-inicio .menu-categorias button.linklike,
+.aside-inicio .linklike {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline !important;
+  color: #555 !important;
+  font: inherit !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+.aside-inicio button.linklike:hover,
+.aside-inicio .menu-categorias button.linklike:hover,
+.aside-inicio .linklike:hover {
+  color: var(--ink) !important;
+  text-decoration: underline !important;
+}
+.aside-inicio button.linklike:focus-visible,
+.aside-inicio .menu-categorias button.linklike:focus-visible,
+.aside-inicio .linklike:focus-visible {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  border-radius: 4px !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 800px) {
+  .layout-inicio,
+  .consulta-layout { grid-template-columns: 1fr; }
+}

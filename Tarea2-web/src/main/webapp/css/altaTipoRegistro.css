@@ -1,0 +1,58 @@
+.form-card-altaTipoRegistro {
+  max-width: 960px;
+  margin: 2rem auto;
+}
+.form-group-altaTipoRegistro {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+.form-group-altaTipoRegistro label {
+  font-weight: 600;
+  margin-bottom: .3rem;
+}
+.form-group-altaTipoRegistro input,
+.form-group-altaTipoRegistro select,
+.form-group-altaTipoRegistro textarea {
+  font: inherit;
+  padding: .5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.form-actions-altaEvento {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.btn-guardar-altaEvento {
+  background: var(--brand);
+  color: #fff;
+  padding: .6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+}
+.btn-cancelar-altaEvento {
+  background: #eee;
+  color: #333;
+  padding: .6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* ==== Sidebar fijo a la izquierda === */
+.container.row {
+  display: flex;
+  align-items: flex-start;
+}
+
+aside.card {
+  flex: 0 0 240px;          /* ancho fijo */
+  margin-right: 2rem;
+  height: auto;
+  align-self: flex-start;   /* evita que crezca con el main */
+}
+
+main.container {
+  flex: 1;                  /* el resto del ancho */
+  max-width: 960px;
+}

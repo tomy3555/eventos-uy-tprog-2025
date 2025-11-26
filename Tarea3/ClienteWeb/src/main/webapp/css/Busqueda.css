@@ -1,0 +1,211 @@
+
+      /* ===== Layout general ===== */
+      .page-busqueda-wrapper{
+        max-width: 1280px;
+        margin: 1rem auto 3rem auto;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: 300px minmax(0,1fr); /* sidebar fijo + contenido fluido */
+        gap: 1.25rem;
+        font-family: inherit; /* hereda tipografía del sitio */
+      }
+
+      /* En móviles apilamos */
+      @media (max-width: 800px){
+        .page-busqueda-wrapper{
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== Sidebar / filtros ===== */
+      .busqueda-sidebar{
+        width: 300px;              /* coincide con la 1ra columna */
+        align-self: start;         /* no se alarga verticalmente */
+        background: rgba(255,255,255,.7);
+        backdrop-filter: saturate(120%) blur(8px);
+        border: 1px solid var(--border, #e5e7eb);
+        border-radius: 14px;
+        box-shadow: 0 6px 24px rgba(0,0,0,.06);
+        padding: 1rem .9rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+        position: sticky;          /* queda fijo al hacer scroll */
+        top: 80px;                 /* ajustar según altura del header */
+        font-family: inherit;
+      }
+
+      @media (max-width: 800px){
+        .busqueda-sidebar{
+          width: 100%;
+          position: static; /* en mobile no es sticky */
+        }
+      }
+
+      .busqueda-sidebar h2{
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text, #111827);
+        margin: 0 0 .25rem;
+      }
+
+      .orden-form label{
+        font-size: .85rem;
+        font-weight: 500;
+        color: var(--textMuted, #4b5563);
+        display: block;
+        margin-bottom: .4rem;
+      }
+
+      .orden-form select{
+        width: 100%;
+        max-width: 260px; /* evita que se “estire” */
+        font-size: .92rem;
+        padding: .5rem .6rem;
+        border-radius: 10px;
+        border: 1px solid var(--border, #d1d5db);
+        background-color: #fff;
+        font-family: inherit;
+      }
+
+      /* ===== Contenido principal ===== */
+      .busqueda-main{
+        font-family: inherit;
+      }
+
+      .busqueda-main h1{
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--text, #111827);
+        margin: 0 0 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+      }
+
+      .busqueda-main h1 .query-chip{
+        background: #ecfeff;
+        color: #0e7490;
+        border: 1px solid #a5f3fc;
+        font-size: .8rem;
+        font-weight: 600;
+        line-height: 1;
+        border-radius: .5rem;
+        padding: .4rem .6rem;
+      }
+
+      /* ===== Grilla de tarjetas ===== */
+      .result-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr));
+        gap: 1.25rem;
+      }
+
+      /* ===== Tarjeta ===== */
+      .result-card.card{
+        display: flex;
+        flex-direction: column;
+        border-radius: 14px;
+        border: 1px solid var(--border, #e5e7eb);
+        background: rgba(255,255,255,.7);
+        box-shadow: 0 10px 28px rgba(0,0,0,.06);
+        padding: 1rem 1rem .85rem;
+        min-height: 210px;
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        font-family: inherit;
+      }
+      .result-card.card:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 14px 32px rgba(0,0,0,.08);
+        border-color: #d8dbe1;
+      }
+
+      .result-head{
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: .75rem;
+        background: linear-gradient(180deg,#f9fafb,#f3f4f6);
+        border: 1px dashed var(--border, #e5e7eb);
+        border-radius: 10px;
+        width: 100%;
+        min-height: 110px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #6b7280;
+        font-size: .8rem;
+        font-weight: 500;
+      }
+
+      .result-body{
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        color: var(--text,#111827);
+      }
+
+      .result-title{
+        font-size: 1.06rem;
+        font-weight: 700;
+        letter-spacing: .1px;
+        line-height: 1.25;
+        margin: 0 0 .45rem;
+      }
+
+      .result-tipo{
+        margin: 0 0 .6rem;
+      }
+      .result-tipo .chip{
+        display: inline-block;
+        font-size: .72rem;
+        font-weight: 600;
+        color: #374151;
+        background: #eef2ff;
+        border: 1px solid #e0e7ff;
+        padding: .28rem .5rem;
+        border-radius: .5rem;
+      }
+
+      .result-actions{
+        margin-top: auto;
+      }
+      .result-actions .btn-vermas{
+        font-size: .85rem;
+        line-height: 1.2;
+        padding: .55rem .85rem;
+        border-radius: .6rem;
+        border: 1px solid #1d4ed8;
+        background-color: #1d4ed8;
+        color: #fff;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .result-actions .btn-vermas:hover{
+        filter: brightness(0.95);
+      }
+
+      .no-results{
+        font-size: .95rem;
+        color: #4b5563;
+        padding: 2rem 0;
+      }
+      /* Tipografía global de esta página */
+html, body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+      /* Mobile tweaks */
+      @media (max-width:800px){
+        .result-head{ min-height: 90px; }
+        .result-title{ font-size: 1rem; }
+      }
+      
+      /* sólo si hay otras cards con glass globalmente */
+.page-busqueda-wrapper .card {
+  background: #fff;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}

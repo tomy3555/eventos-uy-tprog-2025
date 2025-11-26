@@ -1,0 +1,148 @@
+/* ====== Layout igual al index ====== */
+.layout-inicio {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 1rem 2rem;
+}
+
+/* Menú lateral */
+.aside-inicio {
+  flex: 0 0 220px; /* igual que en index */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-sizing: border-box;
+  height: fit-content;
+}
+
+/* Contenido principal */
+.consulta-evento-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Tarjeta del evento */
+.event-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.event-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.event-info h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-meta {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chips {
+  margin-bottom: 1rem;
+}
+
+.chip {
+  display: inline-block;
+  background: #e0e0e0;
+  color: #333;
+  border-radius: 12px;
+  padding: 0.3em 1em;
+  margin-right: 0.5em;
+  font-size: 0.95em;
+}
+
+/* Tarjeta de ediciones */
+.editions {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 300px;
+  height: fit-content;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout-inicio {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .aside-inicio {
+    max-width: 100%;
+  }
+
+  .consulta-evento-main {
+    flex: 1;
+  }
+}
+
+
+/* === Ajustes del layout con menú lateral === */
+.layout-inicio {
+  display: grid;
+  grid-template-columns: 300px 3fr; /* 🔸 Menú más fino */
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* Menú lateral */
+.aside-inicio {
+  align-self: start;          /* evita que se estire verticalmente */
+  height: fit-content;        /* se ajusta al contenido */
+  min-width: 160px;           /* asegura ancho mínimo */
+  max-width: 400px;           /* limita ancho máximo */
+  position: sticky;           /* opcional: queda fijo al hacer scroll */
+  top: 100px;                 /* distancia del header */
+}
+
+/* Opcional: afinar el estilo visual */
+.aside-inicio.card {
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.menu-categorias li {
+  margin-bottom: 1rem;
+}
+/* Contenedores */
+.container{ max-width:var(--max); margin:0 auto; padding:1rem; }
+.container.narrow{ max-width:720px; }
+
+.btn-finalizar-evento {
+  background: #dc2626; /* rojo */
+  color: #fff;
+  border: none;
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.btn-finalizar-evento:hover {
+  background: #b91c1c;
+}
+

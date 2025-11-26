@@ -1,0 +1,814 @@
+/* Load Inter from Google Fonts early to ensure the declared font-family is available */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* === Base muy simple y prolija === */
+:root{
+  --brand:#0a66c2;
+  --ink:#111;
+  --text:#222;
+  --line:#e5e7eb;
+  --bg:#fff;
+  --bg-soft:#f8fafc;
+  --max:90%;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body {
+  /* Global serious font: Inter if available, otherwise a modern system sans-serif stack */
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("/img/fondo-eventos.jpg");
+  background-size: cover;             /* que cubra toda la pantalla */
+  background-position: center;        /* centrado */
+  background-attachment: fixed;       /* se mantiene fijo al hacer scroll */
+  background-repeat: no-repeat;
+  background-color: #1a1a1a;          /* color de respaldo oscuro */
+  color: #222;                        /* mantiene contraste con texto */
+}
+
+/* opcional: capa semitransparente para que el fondo no distraiga */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);  /* blanco con 75% opacidad */
+  backdrop-filter: blur(3px);             /* difumina un poco */
+  z-index: -1;
+}
+a{ color:#666; text-decoration:none; }
+a:hover{ color:var(--ink); text-decoration:underline; }
+
+/* Contenedores */
+.container{ max-width:var(--max); margin:0 auto; padding:1rem; }
+.container.narrow{ max-width:720px; }
+
+/* Header */
+.site-header{ position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); }
+.site-header .container{ display:flex; align-items:center; gap:1rem; }
+.brand{ font-weight:700; color:var(--ink); text-decoration:none; }
+.main-nav{ display:flex; gap:.75rem; margin-left:auto; }
+.user-nav{ display:flex; gap:.5rem; }
+
+/* Botones */
+.btn{ display:inline-block; padding:.5rem .8rem; border-radius:.5rem; border:1px solid #cbd5e1; background:var(--brand); color:#fff; font-weight:600; }
+.btn.ghost{ background:transparent; color:var(--ink); }
+
+/* Titulares */
+h1{ margin:1rem 0 .5rem; font-size:1.6rem; }
+p{ margin:.25rem 0 1rem; }
+
+/* Tarjeta y formularios */
+.card{ border:1px solid var(--line); border-radius:.6rem; padding:1rem; background:#fff; }
+fieldset{ border:1px solid var(--line); border-radius:.5rem; padding:1rem; margin:1rem 0; }
+legend{ padding:0 .4rem; font-weight:700; color:#374151; }
+
+.form label{ display:block; margin-top:.6rem; font-weight:600; }
+.form input,.form textarea,.form select{
+  width:100%; padding:.55rem .7rem; margin-top:.35rem;
+  border:1px solid #cbd5e1; border-radius:.45rem; background:#fff;
+}
+.inline{ display:flex; align-items:center; gap:1rem; }
+
+/* Layout simple de dos columnas (colapsa en mobile) */
+.row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media (max-width:700px){ .row{ grid-template-columns:1fr; } }
+
+/* Tabs discretas */
+.tabs{ margin-top:.5rem; }
+.tabs input[type="radio"]{ position:absolute; left:-9999px; }
+.tablist{ display:flex; gap:.5rem; border-bottom:1px solid var(--line); margin:.5rem 0 1rem; }
+.tab{
+  padding:.45rem .8rem; border:1px solid var(--line); border-bottom:none;
+  border-top-left-radius:.5rem; border-top-right-radius:.5rem;
+  background:var(--bg-soft); cursor:pointer; font-weight:600; color:#444;
+}
+#rol-asistente:checked ~ .tablist label[for="rol-asistente"],
+#rol-organizador:checked ~ .tablist label[for="rol-organizador"]{
+  background:#fff; color:var(--ink); border-color:#cbd5e1;
+}
+.panel{ display:none; }
+#rol-asistente:checked ~ #panel-asistente{ display:block; }
+#rol-organizador:checked ~ #panel-organizador{ display:block; }
+
+/* Acciones */
+.actions{ display:flex; gap:.6rem; margin-top:1rem; }
+
+.hidden{ display:none; }
+
+/* ===== Header con buscador ===== */
+.header-grid{ display:grid; grid-template-columns: 1fr 1.2fr auto; align-items:center; gap:1rem; }
+.search{ display:flex; gap:.5rem; }
+.search-input{
+  flex:1; padding:.5rem .7rem; border:1px solid #cbd5e1; border-radius:.45rem;
+}
+
+/* Avatar pequeño */
+.avatar img{ width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid #e5e7eb; }
+
+/* ===== Layout de consulta de evento ===== */
+.layout{
+  display:grid;
+  grid-template-columns: 220px 1fr 270px;
+  gap:1rem;
+}
+@media (max-width: 992px){
+  .layout{ grid-template-columns: 1fr; }
+}
+
+/* Sidebar izquierda */
+.sidebar{ display:flex; flex-direction:column; gap:1rem; }
+.side-group{ border:1px solid #e5e7eb; border-radius:.5rem; padding:.75rem; background:#fff; }
+.side-group h3{ margin:.25rem 0 .5rem; font-size:1rem; }
+.side-group a{ display:block; padding:.35rem .25rem; color:#555; }
+.side-group a:hover{ color:#111; text-decoration:underline; }
+
+/* Tarjeta de evento */
+.event-card{ border:1px solid #e5e7eb; border-radius:.6rem; background:#fff; }
+.event-header{ display:grid; grid-template-columns: 220px 1fr; gap:1rem; padding:1rem; border-bottom:1px solid #f0f2f5; }
+.event-cover{ width:100%; height:150px; object-fit:contain; border-radius:.4rem; background:#f8fafc; }
+.event-title{ margin:.25rem 0 .5rem; }
+.event-meta{ display:flex; gap:1rem; color:#555; font-size:.95rem; }
+
+.event-body{ padding:1rem; }
+.chips{ display:flex; flex-wrap:wrap; gap:.4rem; margin:.4rem 0; }
+.chip{ padding:.2rem .5rem; border:1px solid #cbd5e1; border-radius:999px; font-size:.85rem; color:#444; background:#fff; }
+
+/* Columna derecha: ediciones */
+.editions{ border:1px solid #e5e7eb; border-radius:.5rem; padding:.75rem; background:#fff; }
+.editions h3{ margin:.25rem 0 .5rem; }
+.edition-item{
+  display:grid; grid-template-columns: 64px 1fr; gap:.6rem; align-items:center;
+  padding:.4rem; border-radius:.45rem; text-decoration:none; color:#222;
+}
+.edition-item img{ width:64px; height:48px; object-fit:cover; border-radius:.3rem; background:#f8fafc; border:1px solid #eef2f7; }
+.edition-item:hover{ background:#f8fafc; }
+.edition-title{ font-weight:700; line-height:1.15; }
+
+/* Header centrado con 3 columnas: [izq (buscador/spacer)] [brand centrado] [user derecha] */
+.site-header .container.header-grid{
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  gap:1rem;
+}
+.brand{ justify-self:center; font-weight:800; text-decoration:none; color:#111; }
+
+.search{ justify-self:start; display:flex; gap:.5rem; max-width:560px; width:100%; }
+.search-input{ flex:1; padding:.5rem .7rem; border:1px solid #cbd5e1; border-radius:.45rem; }
+
+.user-nav{ justify-self:end; display:flex; align-items:center; gap:.6rem; }
+.user{ display:flex; align-items:center; gap:.5rem; text-decoration:none; color:#333; }
+.user img{ width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid #e5e7eb; }
+.user-name{ font-weight:600; }
+
+.header-spacer{ height:1px; } /* ocupa la columna izquierda cuando no hay buscador */
+
+/* para que se vea clickeable el nombre usuario e imagen */
+.user { display:flex; align-items:center; gap:.5rem; color:#333; text-decoration:none; cursor:pointer; }
+.user:hover { text-decoration:underline; }
+.user img { width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid #e5e7eb; }
+.user:focus-visible { outline:2px solid #3b82f6; outline-offset:2px; border-radius:.4rem; }
+
+
+/* ===== Alta de Evento ===== */
+.form-card-altaEvento {
+  border: 1px solid var(--line);
+  border-radius: .6rem;
+  padding: 1.5rem;
+  background: #fff;
+  max-width: 640px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.form-card h2 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+}
+
+.form-group-altaEvento {
+  margin-bottom: 1rem;
+}
+
+.form-group-altaEvento label {
+  display: block;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.form-group-altaEvento input,
+.form-group-altaEvento textarea,
+.form-group-altaEvento select {
+  width: 100%;
+  padding: .55rem .7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: .45rem;
+  font-size: .95rem;
+  background: #fff;
+}
+.btn-linklike{background:#f9fafb; border:1px solid #d1d5db; padding:.45rem .75rem; border-radius:8px; cursor:pointer}
+    .btn-linklike:hover{background:#f3f4f6}
+.form-group-altaEvento small {
+  display: block;
+  margin-top: .3rem;
+  font-size: .8rem;
+  color: #555;
+}
+
+.form-actions-altaEvento {
+  display: flex;
+  justify-content: flex-end;
+  gap: .8rem;
+  margin-top: 1.5rem;
+}
+
+.btn-guardar-altaEvento {
+  background-color: var(--brand);
+  border: 1px solid var(--brand);
+  color: #fff;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.btn-guardar-altaEvento:hover {
+  background-color: #004a99;
+  border-color: #004a99;
+}
+
+.btn-cancelar-altaEvento {
+  background-color: #6c757d;
+  border: 1px solid #6c757d;
+  color: #fff;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.btn-cancelar-altaEvento:hover {
+  background-color: #5c636a;
+  border-color: #5c636a;
+}
+.form-hint-altaEvento {
+  font-size: .85rem;
+  color: #666;
+  margin-top: .5rem;
+  text-align: right;
+}
+
+.checkbox-grid-ev {
+  display: grid;
+  grid-template-columns: 1fr auto; /* texto ocupa todo, checkbox queda alineado */
+  row-gap: 0.5rem;
+  max-width: 300px; /* opcional, para que no se estire mucho */
+}
+
+.checkbox-grid-ev label {
+  display: contents; /* permite que el span y el input usen las columnas del grid */
+}
+
+.checkbox-grid-ev span {
+  text-align: left;
+}
+
+.checkbox-grid-ev input[type="checkbox"] {
+  justify-self: center; /* centra los checkbox en su columna */
+}
+
+
+
+
+/* ===== FIN Alta de Evento ===== */
+
+/* ===== Alta de Tipo Registro ===== */
+
+.form-card-altaTipoRegistro {
+  border: 1px solid var(--line);
+  border-radius: .6rem;
+  padding: 1.5rem;
+  background: #fff;
+  max-width: 640px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.form-card-altaTipoRegistro h2 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+}
+
+.form-group-altaTipoRegistro {
+  margin-bottom: 1rem;
+}
+
+.form-group-altaTipoRegistro label {
+  display: block;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.form-group-altaTipoRegistro input,
+.form-group-altaTipoRegistro textarea,
+.form-group-altaTipoRegistro select {
+  width: 100%;
+  padding: .55rem .7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: .45rem;
+  font-size: .95rem;
+  background: #fff;
+}
+
+.form-group-altaTipoRegistro small,
+.form-hint-altaTipoRegistro {
+  display: block;
+  margin-top: .3rem;
+  font-size: .8rem;
+  color: #555;
+}
+
+.form-actions-altaTipoRegistro {
+  display: flex;
+  justify-content: flex-end;
+  gap: .8rem;
+  margin-top: 1.5rem;
+}
+
+.btn-guardar-altaTipoRegistro {
+  background-color: #198754;
+  border: 1px solid #198754;
+  color: #fff;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.btn-guardar-altaTipoRegistro:hover {
+  background-color: #157347;
+  border-color: #157347;
+}
+
+.btn-cancelar-altaTipoRegistro {
+  background-color: #6c757d;
+  border: 1px solid #6c757d;
+  color: #fff;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.btn-cancelar-altaTipoRegistro:hover {
+  background-color: #5c636a;
+  border-color: #5c636a;
+}
+
+
+/* ===== FIN Alta de Tipo de Registro ===== */
+
+/* ===== Consulta de Tipo de Registro ===== */
+
+
+.form-card-consultaTipoRegistro {
+  border: 1px solid var(--line);
+  border-radius: .6rem;
+  padding: 1.5rem;
+  background: #fff;
+  max-width: 640px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.form-card-consultaTipoRegistro h2 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+}
+
+.form-group-consultaTipoRegistro {
+  margin-bottom: 1rem;
+}
+
+.form-group-consultaTipoRegistro label {
+  display: block;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.form-group-consultaTipoRegistro input,
+.form-group-consultaTipoRegistro textarea,
+.form-group-consultaTipoRegistro select {
+  width: 100%;
+  padding: .55rem .7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: .45rem;
+  font-size: .95rem;
+  background: #fff;
+}
+
+.registro-detalles-consultaTipoRegistro {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: .6rem;
+  background: #f9fafb;
+}
+
+.registro-detalles-consultaTipoRegistro h3 {
+  margin-top: 0;
+  margin-bottom: .8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.registro-detalles-consultaTipoRegistro ul {
+  /* list-style: none; */
+  padding: 0;
+  margin: 0;
+}
+
+.registro-detalles-consultaTipoRegistro li {
+  margin-bottom: .4rem;
+  font-size: .95rem;
+  color: #333;
+}
+
+.registro-detalles-consultaTipoRegistro li strong {
+  color: #111;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Botón hamburguesa */
+.hamburguesa {
+  font-size: 24px;
+  background: none ;
+  border: none ;
+  cursor: pointer ;
+  margin: 1rem ;
+  z-index: 1001 ;
+  position: relative ;
+}
+
+/* Sidebar oculto por defecto */
+.sidebar-mobile {
+
+	
+  position: fixed !important;
+  top: 0;
+  left: -250px; /* ⬅️ oculto */
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* Sidebar visible */
+.sidebar-mobile.active {
+  left: 0; /* aparece en pantalla */
+}
+
+/* Radios "Asistente / Organizador" alineados */
+.role-group{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  border:0;
+  padding:0;
+  margin:0 0 1rem;
+}
+.role-group > legend{
+  margin-right:.75rem;
+  font-weight:600;
+}
+.role-option{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  line-height:1;       /* evita saltos raros */
+  margin:0;
+}
+.role-option input[type="radio"]{
+  margin:0;            /* quita margen por defecto que desnívela */
+  vertical-align:middle;
+}
+
+/* Dropdown menu for hamburguesa */
+.dropdown-menu {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: .5rem 0;
+  min-width: 180px;
+  color: var(--ink);
+}
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.dropdown-menu li {
+  padding: .3rem 1rem;
+}
+.dropdown-menu li a {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  padding: .3rem 0;
+}
+.dropdown-menu li a:hover {
+  background: var(--bg-soft);
+  color: var(--brand);
+}
+
+/* Para cualquier botón del modal de diálogo */
+button, 
+input[type="button"], 
+input[type="submit"] {
+  cursor: pointer;
+}
+
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.dropbtn {
+  background-color: #0a66c2;
+  color: white;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Contenido del menú */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Mostrar al pasar mouse */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* === WRAPPER GENERAL DEL LOGIN === */
+.wrapper-iniciar-sesion {
+  width: 100%;
+  max-width: 500px;           /* ancho máximo controlado */
+  margin: 3rem auto;          /* centra vertical y horizontalmente */
+  padding: 2rem;
+}
+
+/* === TÍTULO === */
+.titulo-iniciar-sesion {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  color: var(--text);
+}
+
+/* === FORMULARIO === */
+.form-iniciar-sesion {
+  background-color: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* === FILAS Y CAMPOS === */
+.row-iniciar-sesion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.campo-iniciar-sesion label {
+  font-weight: 500;
+  color: var(--text);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.campo-iniciar-sesion input {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* === ACCIONES (BOTONES) === */
+.acciones-iniciar-sesion {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-iniciar-sesion {
+  background-color: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+}
+
+.btn-iniciar-sesion:hover {
+  background-color: #004999;
+}
+
+.btn-cancelar-iniciar-sesion {
+  background-color: #ccc;
+  color: #333;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  flex: 1;
+}
+
+.btn-cancelar-iniciar-sesion:hover {
+  background-color: #999;
+  color: white;
+}
+
+/* === ERROR === */
+.error-iniciar-sesion {
+  color: #c00;
+  font-size: 0.9rem;
+  text-align: center;
+  display: none; /* visible solo con JS */
+  margin-top: 0.5rem;
+}
+/*  alta usuario */
+.form-wrapper {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rol-opcion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+
+
+/* === Ajuste de espaciado para formulario Alta Usuario === */
+.input-group {
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.input-full {
+  margin-top: 1.5rem;
+}
+
+/* Small-screen adjustments for the login wrapper (global override) */
+@media (max-width: 480px) {
+  /* Ensure the wrapper doesn't hug the left edge and centers the card */
+  .wrapper-iniciar-sesion {
+    max-width: 480px;
+    margin: 0 auto;            /* horizontal centering */
+    padding: 0 1rem;          /* horizontal breathing room */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* vertical centering inside viewport when used */
+    align-items: center;      /* center card horizontally inside wrapper */
+    min-height: calc(100vh - 72px); /* adjust to header/footer height if needed */
+  }
+
+  /* Keep the card constrained and centered inside the wrapper */
+  .form-iniciar-sesion {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Stack action buttons and make them full-width for touch targets */
+  .acciones-iniciar-sesion {
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .acciones-iniciar-sesion .btn,
+  .btn-iniciar-sesion,
+  .btn-cancelar-iniciar-sesion { width: 100%; }
+  
+  html, body {
+  height: 100%;
+  background: url("../img/fondo-eventos.jpg") center/cover no-repeat fixed;
+  background-color: #1a1a1a;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(3px);
+  z-index: -1;
+}
+
+/* transparencia para que se vea el fondo */
+main, .container, .card, aside {
+  background-color: transparent !important;
+}
+/* ===== Header translúcido ===== */
+.site-header !important {
+  background: rgba(255, 255, 255, 0.7) !important; /* menos opaca */
+  backdrop-filter: blur(8px) saturate(130%);       /* efecto vidrio */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+/* ===== Paneles semitransparentes tipo "glass" ===== */
+body .card,
+body .aside-inicio {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ajuste del texto */
+body .card h1, 
+body .card h2, 
+body .card p,
+body .aside-inicio h3, 
+body .aside-inicio h4, 
+body .aside-inicio li, 
+body .aside-inicio button {
+  color: #111 !important;
+}

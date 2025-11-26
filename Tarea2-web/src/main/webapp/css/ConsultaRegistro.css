@@ -1,0 +1,46 @@
+/* ===== ConsultaRegistro.css ===== */
+
+/* Encabezado unificado */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  .topbar-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: .8rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+  .topbar-brand {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #111827;
+    text-decoration: none;
+  }
+  .topbar-brand:hover { text-decoration: underline; }
+  
+  /* Layout */
+  label { display:block; margin:.8rem 0; }
+  select {
+    width: 100%;
+    padding: .6rem .7rem;
+    border: 1px solid var(--line,#e5e7eb);
+    border-radius: .5rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line,#e5e7eb);
+    border-radius: .6rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,.04);
+  }
+  .hide { display:none; }
+  ul { list-style: disc; padding-left:1.2rem; }
+  ul li { cursor:pointer; margin:.3rem 0; }
+  ul li:hover { text-decoration: underline; }

@@ -1,0 +1,107 @@
+/* ConsultaEdicion base CSS */
+body, .edicion-card, .edicion-title, .edicion-header, .edicion-info, .edicion-info h3, .edicion-meta,
+.chips, .chip, .categorias-label, .evento, .evento-title, .patrocinios, .patrocinio-title, .tipos-registro, .tipo-title {
+  /* Use the site's global font (inherited from body) so typography is consistent */
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/* Contenedor principal: más ancho y centrado, layout vertical */
+.edicion-card {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  max-width: 1200px;     /* << más ancho */
+  margin: 2rem auto;     /* centrado */
+  padding: 0 1rem;       /* respiro lateral en pantallas chicas */
+
+  display: grid;
+  grid-template-columns: 1fr; /* vertical: título -> imagen -> info */
+  justify-items: center;      /* centra el contenido interior */
+  gap: 2rem;
+}
+
+/* Header + título centrados */
+.edicion-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* centrado */
+  justify-content: flex-start;
+}
+.edicion-title {
+  font-size: 2rem !important;
+  font-weight: bold;
+  margin: 0.5rem 0 1rem 0;
+  text-align: center;     /* centrado */
+}
+
+/* Imagen: centrada, sin desbordes, responsiva */
+.edicion-cover {
+  width: 100%;
+  max-width: 900px;       /* << subí a 1000px si querés aún más grande */
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto 1rem;
+  box-shadow: none;
+  display: block;
+}
+
+/* Bloque de info: ancho de lectura cómodo y centrado */
+.edicion-info {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Bloques auxiliares ya existentes */
+.evento {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.evento-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 1rem;
+}
+.evento-title {
+  font-weight: bold;
+  font-size: 1.1rem !important;
+  font-family: inherit;
+}
+.organizador,
+.tipos-registro,
+.patrocinios { margin-bottom: 1rem; }
+
+.tipo-title,
+.patrocinio-title {
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .edicion-card {
+    gap: 1.25rem;
+  }
+  .edicion-cover {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .edicion-info {
+    max-width: 100%;
+  }
+}

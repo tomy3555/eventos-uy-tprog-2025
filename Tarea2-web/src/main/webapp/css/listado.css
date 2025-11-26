@@ -1,0 +1,60 @@
+/* ===== Listado de eventos ===== */
+
+/* Layout con aside a la izquierda (colapsa en mobile) */
+.page-list{
+  display:grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1rem;
+}
+@media (max-width: 800px){
+  .page-list{ grid-template-columns: 1fr; }
+}
+
+/* Título y subtítulo de la vista */
+.list-title{ margin: 1rem 0 .25rem; font-size: 1.6rem; }
+.list-sub{ margin: 0 0 1rem; color:#667085; }
+
+/* Grilla de cards responsiva */
+.cards-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+/* Reusa tu .card como base; le damos un look acorde al resto */
+.event-card.list{
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  padding:1rem;
+}
+
+/* Título y subtítulo dentro de la card */
+.event-card .event-title{ margin:.1rem 0 .25rem; font-size:1.05rem; font-weight:700; color:var(--ink); }
+.event-card .event-sub{ margin:0; color:#555; }
+
+/* Descripción breve */
+.event-card .event-desc{ margin:.25rem 0 0; color:#333; }
+
+/* Chips ya existen en tu style.css (.chips y .chip); solo afinamos separación */
+.event-card .chips{ margin-top:.5rem; }
+
+/* Footer con CTA a la derecha */
+.event-footer{
+  margin-top:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:.5rem;
+}
+
+/* Imagen opcional (si la usás) */
+.event-cover{
+  width:100%;
+  aspect-ratio: 16/9;
+  object-fit:cover;
+  border-radius:.4rem;
+  background: var(--bg-soft);
+  border:1px solid var(--line);
+  margin-bottom:.5rem;
+}

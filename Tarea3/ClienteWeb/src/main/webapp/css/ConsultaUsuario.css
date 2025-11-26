@@ -1,0 +1,108 @@
+.usuarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: start;
+  justify-items: stretch;
+}
+
+.usuario-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border: 1px solid #e6eef8;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(11,27,50,0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  transition: transform .18s ease, box-shadow .18s ease;
+  text-align: center;
+}
+
+.usuario-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(11,27,50,0.10);
+}
+
+.usuario-card .avatar,
+.usuario-card img.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f3f4f6;
+  display: block;
+  margin-bottom: .5rem;
+  border: 2px solid rgba(3,102,214,0.06);
+  box-shadow: 0 2px 6px rgba(11,27,50,0.04);
+}
+
+.no-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg,#f5f7fb,#eef6ff); color:#475569; font-size:.75rem; text-align:center;
+  padding:6px; box-sizing:border-box; margin-bottom:.5rem; border: 1px solid #e6eef8;
+}
+
+.usuario-card h3 {
+  font-size: 1rem;
+  margin: 0.25rem 0 0.2rem;
+  color: #0f172a;
+  display: flex; align-items: center; gap: .4rem; justify-content: center;
+}
+
+.usuario-card p {
+  margin: 0.25rem 0;
+  color: #475569;
+  font-size: .92rem;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #0366d6;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.usuario-card .btn {
+  margin-top: .6rem;
+  padding: .4rem .9rem;
+  background: #0a66c2;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: .92rem;
+}
+
+.usuario-card .btn:hover { background: #084d99; }
+
+/* Force follow-state buttons to keep the default blue appearance so they don't turn green */
+.usuario-card .btn.following,
+.usuario-card .btn.not-following {
+  background: #0a66c2 !important;
+  color: #fff !important;
+}
+
+.perfil-header { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+.perfil-header .avatar { width:96px; height:96px; border-radius:50%; object-fit:cover; background:#f3f4f6; }
+.perfil-header .no-avatar { width:96px; height:96px; font-size:.82rem; padding:8px; margin:0; }
+
+.follow-bar { display:flex; align-items:center; gap:.75rem; margin:.5rem 0; }
+.btn-link-small { background:none; border:none; color:#0366d6; text-decoration:underline; cursor:pointer; padding:0; font-size:.95rem; }
+.hint { font-size:.85rem; color:#6b7280; }
+
+@media (max-width: 560px) {
+  .usuarios-grid { grid-template-columns: 1fr; }
+  .usuario-card { padding: .75rem; }
+  .usuario-card .btn { width: 100%; }
+}

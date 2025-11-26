@@ -1,0 +1,79 @@
+/* ===== ConsultaEdicionEvento.css ===== */
+
+/* Encabezado */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  .topbar-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: .8rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+  .topbar-brand {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #111827;
+    text-decoration: none;
+    letter-spacing: .2px;
+  }
+  .topbar-brand:hover { text-decoration: underline; }
+  
+  /* Layout */
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width:700px) {
+    .row { grid-template-columns: 1fr; }
+  }
+  label { display:block; margin:.8rem 0; }
+  select {
+    width: 100%;
+    padding: .6rem .7rem;
+    border: 1px solid var(--line,#e5e7eb);
+    border-radius: .5rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line,#e5e7eb);
+    border-radius: .6rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,.04);
+  }
+  .hide { display: none; }
+  .muted { color: #6b7280; }
+  
+  /* Detalle edición */
+  .edicion-head {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 1rem;
+    align-items: start;
+  }
+  .edicion-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: .5rem;
+    border: 1px solid var(--line,#e5e7eb);
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .clean { list-style: disc; padding-left: 1.2rem; }
+  @media (max-width:700px) {
+    .edicion-head { grid-template-columns: 1fr; }
+    .columns { grid-template-columns: 1fr; }
+  }

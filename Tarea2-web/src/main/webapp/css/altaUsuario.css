@@ -1,0 +1,133 @@
+/* ==== Layout general ==== */
+.layout-alta-usuario {
+  display: grid;
+  grid-template-columns: 300px 3fr;
+  gap: 2rem;
+/*   margin-top: 1.5rem; */
+}
+
+/* /* //==== Sidebar igual que en index.css ==== */
+/* .layout-alta-usuario aside {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: .6rem;
+}
+
+.layout-alta-usuario aside h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.layout-alta-usuario aside h4 {
+  margin-top: 1rem;
+  font-size: 1rem;
+} */ */
+
+/* .layout-alta-usuario aside ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.layout-alta-usuario aside li {
+  margin-bottom: 0.4rem;
+} */
+
+/* .layout-alta-usuario aside a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.layout-alta-usuario aside a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+ */
+/* ==== Formulario ==== */
+.form-wrapper-alta-usuario {
+  background: #fff;
+  padding: 2rem;
+  border-radius: .6rem;
+  border: 1px solid var(--line);
+}
+
+.titulo-alta-usuario {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+/* === Estructura === */
+.form-alta-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* === Campos dobles en fila === */
+.fila-doble {
+  display: flex;
+  gap: 1rem;
+}
+
+.fila-doble .input-group {
+  flex: 1;
+}
+
+/* === Agrupación === */
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: 600;
+  margin-bottom: .3rem;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* === Fieldset de rol === */
+.fieldset-rol {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.fieldset-rol legend {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.rol-opcion {
+  display: inline-block;
+  margin-right: 1rem;
+  font-weight: normal;
+}
+
+/* === Acciones === */
+.acciones-form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* === Mensaje de error === */
+#msg {
+  font-weight: bold;
+  margin-top: .5rem;
+}
+
+input.ok    { border: 2px solid #22c55e !important; }
+input.error { border: 2px solid #ef4444 !important; }
+.hint.ok    { color: #15803d !important; }
+.hint.error { color: #b91c1c !important; }
